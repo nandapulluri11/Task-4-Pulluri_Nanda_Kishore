@@ -1,0 +1,31 @@
+name: "MobileNet-SSD-Demo"
+input: "data"
+input_shape { dim: 1  dim: 3  dim: 300  dim: 300 }
+
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 21
+    kernel_size: 1
+    pad: 0
+    stride: 1
+    bias_term: true
+  }
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param { pool: AVE  global_pooling: true }
+}
+layer {
+  name: "reshape1"
+  type: "Reshape"
+  bottom: "pool1"
+  top: "detection_out"
+  reshape_param { shape { dim: 1  dim: 1  dim: 3  dim: 7 } }
+}

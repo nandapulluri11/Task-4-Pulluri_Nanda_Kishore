@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+env/
+*.egg-info/
+dist/
+build/
+output/*.jpg
+output/*.png
+output/*.txt
+!output/.gitkeep
+models/*.caffemodel
+*.pdf
